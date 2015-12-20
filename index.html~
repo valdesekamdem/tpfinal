@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+    <head>
+        <link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 align="center"><u>TP MongoDB</u></h1>
+            <div>
+                <ul class="nav nav-pills">
+                    <li><a href="#favoris"><b><h2>Favoris</h2></b></a></li>
+                    <li><a href="#contacts"><b><h2>Contacts</h2></b></a></li>
+                    <li><a href="#groups"><b><h2>Groupes</h2></b></a></li>
+                </ul>
+            </div>
+            <div class="container" ng-view></div>
+            
+            <!--<div class="row" ng-controller="TableCtrlController">
+                
+        </div>-->
+        
+        
+        <script type="text/javascript" src="libs/angular.min.js"></script>
+        <script type="text/javascript" src="libs/angular-route.js"></script>
+        <script type="text/javascript" src="services/contact-service.js"></script>
+        <script type="text/javascript" src="controllers/contact-controller.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>

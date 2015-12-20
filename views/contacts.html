@@ -1,0 +1,69 @@
+<br>
+<div>
+    <div>
+        <form class="col-md-4" name="contactForm">
+            <fieldset>
+                <legend>Nouveau contact</legend>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="contact.name"
+                           placeholder="Nom complet" >
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" ng-model="contact.phone"
+                            placeholder="Téléphone">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" ng-model="contact.email"
+                            placeholder="Adresse mail">
+                </div>
+                <div ng-show="new">
+                    <button type="submit" ng-disabled="contactForm.$invalid" class="btn btn-success btn-sm" ng-click="addContact()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                         Ajouter
+                    </button>
+                    <button type="reset" class="btn btn-default pull-right btn-sm">
+                        <i class="glyphicon glyphicon-remove"></i>
+                         Annuler
+                    </button>
+                </div>
+                
+                <div ng-show="old">
+                    <button type="submit" class="btn btn-warning btn-sm" ng-click="updateContact()">
+                        <i class="glyphicon glyphicon-save"></i>
+                         Modifier
+                    </button>
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
+    
+            <h3>Liste de contacts</h3>
+    <div class="col-md-8  col-sm-12 well">
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model="searchWord"
+                   placeholder="Cherchez-vous un contact ?" ng-change="search()">
+        </div>
+        
+        <table class="table table-responsive table-condensed table-striped table-hover">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Email</th>
+                <th>Opérations</th>
+            </tr>
+            <tr ng-repeat="contact in contacts">
+                <td>{{contact.id}}</td>
+                <td>{{contact.name | uppercase}}</td>
+                <td>{{contact.phone}}</td>
+                <td>{{contact.email}}</td>
+                <td>
+                    <button type="submit" class="btn btn-xs btn-warning" title="edit" ng-click="editContact(contact.id)"><i class="glyphicon glyphicon-edit"></i> Edit</button>
+                    <button type="submit" class="btn btn-xs btn-danger" title="delete" ng-click="deleteContact(contact.id)"><i class="glyphicon glyphicon-trash"></i> Delete</button>
+                    <!--<button type="submit" class="glyphicon glyphicon-star btn btn-xs btn-default" title="edit" ng-click="edit($index)"></button>-->
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
