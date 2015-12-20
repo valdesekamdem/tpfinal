@@ -2,62 +2,69 @@ var app = angular.module('contactModuleService', []);
 app.factory('ContactService', function(){
     var contact = {};
     var uid = 1;
-    var contacts = [
-        {
-            "id": uid,
-            "name": 'KKV',
-            "phone": 111111111,
-            "email": 'kkv@localhost.cm'
-        },
-        {
-            "id": ++uid,
-            "name": 'Father',
-            "phone": 222222222,
-            "email": "father@localhost.cm"
-        }
-    ];
+    var contacts = [];
     
     contact.add = function(contact) {
-        contact.id = ++uid;
-        contacts.push(contact);
+        // TODO communiquer avec le endpoint afin de créer un contact au backend.
+        
+        
+        /*contact.id = ++uid;
+        contacts.push(contact);*/
     }
     
     contact.update = function(contact) {
-        for(index in contacts) {
+        // TODO envoyer le contact au endpoint afin de le mettre à jour.
+        
+        
+        /*for(index in contacts) {
             if(contacts[index].id == contact.id){
                 contacts[index] = contact;
             }
-        }
+        }*/
     }
     
     contact.delete = function(id) {
-        for(index in contacts) {
+        // TODO supprimer dans la base données "phone" le contact dont l'id correspond à celui passé en paramètre.
+        
+        
+        /*for(index in contacts) {
             if(contacts[index].id == id){
                 contacts.splice(index, 1);
             }
-        }
+        }*/
     }
     
     contact.getAll = function() {
-        return contacts;
+        // TODO: Lister tout les contacts de la BD.
+        
+        
+        /*return contacts;*/
     }
     
     contact.get = function(id) {
-        for(index in contacts) {
+        // TODO: récupérer le contact dont l'id correspond à celui passé en paramètre.
+        
+        
+        /*for(index in contacts) {
             if(contacts[index].id == id) {
                 return contacts[index];
             }
-        }
+        }*/
     }
     
+    
+    /*Cette méthode est appelée à chaque fois que l'utilisateur change la valeur du formulaire de recherche*/
     contact.searchContacts = function(value) {
-        var contactResult = [];
+        // TODO: Retourner la liste des contacts dont le nom "est comme (like)" la valeur passée en paramètre. 
+        
+        
+        /*var contactResult = [];
         for(index in contacts) {
-            /*if(contacts[index].name.contains(value)){
+            if(contacts[index].name.contains(value)){
                 contactResult.push(contacts[index]);
-            }*/
+            }
         }
-        return contactResult;
+        return contactResult;*/
     }
     
     return contact;
