@@ -1,36 +1,50 @@
 var app = angular.module('contactModule', ["contactModuleService"]);
 app.controller('ContactsController', function($scope, ContactService){
     
-    $scope.contacts = ContactService.getAll();
+    $scope.contacts = [];
     $scope.new = true;
     $scope.old = false;
     console.info($scope.contacts)
     
+    $scope.findAll = function() {
+        ContactService.getAll().success(function(response){
+            $scope.contacts = response;
+        });
+    }
+    
+    $scope.findAll();
+    
     $scope.addContact = function() {
-        ContactService.add($scope.contact);
+        ContactService.add($scope.contact).success(function(){
+            $scope.findAll();
+        });
         $scope.contact = {};
     }
     
     $scope.updateContact = function() {
-        ContactService.update($scope.contact);
-        $scope.contact = {};
-        $scope.new = true;
-        $scope.old = false;
+       
+        $scope.clear();
     }
     
     $scope.deleteContact = function(id) {
-        ContactService.delete(id);
+        
     }
     
     $scope.editContact = function (id) {
-        $scope.contact = angular.copy(ContactService.get(id));
+       
         $scope.new = false;
         $scope.old = true;   
     }
     
-    /*$scope.search = function() {
-        $scope.contacts = ContactService.searchContacts($scope.searchWord);
+    $scope.search = function() {
+       
         console.info($scope.searchWord);
-    };*/
+    };
+    
+    $scope.clear = function() {
+        $scope.contact = {};
+        $scope.new = true;
+        $scope.old = false;
+    }
 
 });

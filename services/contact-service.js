@@ -1,20 +1,17 @@
 var app = angular.module('contactModuleService', []);
-app.factory('ContactService', function(){
+app.factory('ContactService', function($http){
     var contact = {};
-    var uid = 1;
     var contacts = [];
-    
+    var url = "http://localhost:8080/api/contact";
     contact.add = function(contact) {
         // TODO communiquer avec le endpoint afin de créer un contact au backend.
-        
-        
+        return $http.post(url+"/create", contact);
         /*contact.id = ++uid;
         contacts.push(contact);*/
     }
     
     contact.update = function(contact) {
         // TODO envoyer le contact au endpoint afin de le mettre à jour.
-        
         
         /*for(index in contacts) {
             if(contacts[index].id == contact.id){
@@ -26,7 +23,6 @@ app.factory('ContactService', function(){
     contact.delete = function(id) {
         // TODO supprimer dans la base données "phone" le contact dont l'id correspond à celui passé en paramètre.
         
-        
         /*for(index in contacts) {
             if(contacts[index].id == id){
                 contacts.splice(index, 1);
@@ -36,8 +32,7 @@ app.factory('ContactService', function(){
     
     contact.getAll = function() {
         // TODO: Lister tout les contacts de la BD.
-        
-        
+        return $http.get(url+"/findAll");
         /*return contacts;*/
     }
     
@@ -56,7 +51,6 @@ app.factory('ContactService', function(){
     /*Cette méthode est appelée à chaque fois que l'utilisateur change la valeur du formulaire de recherche*/
     contact.searchContacts = function(value) {
         // TODO: Retourner la liste des contacts dont le nom "est comme (like)" la valeur passée en paramètre. 
-        
         
         /*var contactResult = [];
         for(index in contacts) {
